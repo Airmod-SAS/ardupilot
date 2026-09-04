@@ -1,10 +1,10 @@
-## ZeroOneX6 Air/Air+ Flight Controller
+# ZeroOneX6 Air/Air+ Flight Controller
 
 The ZeroOneX6_Air is a series of flight controllers manufactured by ZeroOne, which is based on the open-source FMU v6C architecture and Pixhawk Autopilot Bus open source specifications.
 
 ![Uploading ZeroOneX6_Air.jpg…](https://github.com/ZeroOne-Aero/ardupilot/blob/pr-ZeroOneX6_Air_Series-250103/libraries/AP_HAL_ChibiOS/hwdef/ZeroOneX6_Air/ZeroOneX6_Air.png?raw=true)
 
-## Features:
+## Features
 
 - Separate flight control Inertial Measurement Unit design.
 - MCU
@@ -26,12 +26,12 @@ The ZeroOneX6_Air is a series of flight controllers manufactured by ZeroOne, whi
 - **Air's Sensors**
   - IMU:
 
-        With Synced IMU, BalancedGyro technology, low noise and more shock-resistant:
-        IMU- ICM45686 (No vibration isolation)
+    - With Synced IMU, BalancedGyro technology, low noise and more shock-resistant:
+    - IMU- ICM45686 (No vibration isolation)
 
   - Baro:
 
-      one barometer ：ICP20100
+      one barometer: ICP20100
 
   - Magnetometer:
 
@@ -48,7 +48,7 @@ The ZeroOneX6_Air is a series of flight controllers manufactured by ZeroOne, whi
 
   - Baro:
 
-      Two barometers ：2 x ICP20100
+      Two barometers: 2 x ICP20100
 
   - Magnetometer:
 
@@ -78,12 +78,12 @@ The UARTs are marked Rn and Tn in the above pinouts. The Rn pin is the receive p
 The SBUS pin, can be used for all ArduPilot supported receiver protocols, except CRSF/ELRS and SRXL2 which require a true UART connection. However, FPort, when connected in this manner, will only provide RC without telemetry.
 To allow CRSF and embedded telemetry available in Fport, CRSF, and SRXL2 receivers, a full UART, such as SERIAL6 (UART4) would need to be used for receiver connections. Below are setups using Serial6.
 
-- :ref:`SERIAL6_PROTOCOL<SERIAL6_PROTOCOL>` should be set to "23".
-- FPort would require :ref:`SERIAL6_OPTIONS<SERIAL6_OPTIONS>` be set to "15".
-- CRSF/ELRS would require :ref:`SERIAL6_OPTIONS<SERIAL6_OPTIONS>` be set to "0".
-- SRXL2 would require :ref:`SERIAL6_OPTIONS<SERIAL6_OPTIONS>` be set to "4" and connects only the TX pin.
+- [SERIAL6_PROTOCOL](https://ardupilot.org/copter/docs/parameters.html#serial6-protocol-serial6-protocol-selection) should be set to "23".
+- FPort would require [SERIAL6_OPTIONS](https://ardupilot.org/copter/docs/parameters.html#serial6-options-serial6-options) be set to "15".
+- CRSF/ELRS would require [SERIAL6_OPTIONS](https://ardupilot.org/copter/docs/parameters.html#serial6-options-serial6-options) be set to "0".
+- SRXL2 would require [SERIAL6_OPTIONS](https://ardupilot.org/copter/docs/parameters.html#serial6-options-serial6-options) be set to "4" and connects only the TX pin.
 
-Any UART can be used for RC system connections in ArduPilot also, and is compatible with all protocols except PPM. See :ref:`common-rc-systems` for details.
+Any UART can be used for RC system connections in ArduPilot also, and is compatible with all protocols except PPM. See [RC systems](https://ardupilot.org/copter/docs/common-rc-systems.html) for details.
 
 ## PWM Output
 
@@ -106,37 +106,44 @@ The A9-15 outputs are in 4 groups:
 
 Channels within the same group need to use the same output rate. If any channel in a group uses DShot then all channels in the group need to use DShot.
 
-## GPIO
+## GPIOs
 
 All PWM outputs can be used as GPIOs (relays, camera, RPM etc). To use them you need to set the output’s SERVOx_FUNCTION to -1. The numbering of the GPIOs for PIN variables in ArduPilot is:
 
-<table>
-  <tr>
-    <th colspan="3">IO Pins</th>
-    <th colspan="1"> </th>
-    <th colspan="3">FMU Pins</th>
-  </tr>
-  <tr><td> Name </td><td> Value </td><td> Option </td><td>  </td><td> Name </td><td> Value </td><td> Option </td></tr>
-  <tr><td> M1 </td><td> 101 </td> <td> MainOut1 </td><td>  </td><td> A9 </td><td> 50 </td><td> AuxOut1 </td></tr>
-  <tr><td> M2 </td><td> 102 </td> <td> MainOut2 </td><td>  </td><td> A10 </td><td> 51 </td><td> AuxOut2 </td></tr>
-  <tr><td> M3 </td><td> 103 </td> <td> MainOut3 </td><td>  </td><td> A11 </td><td> 52 </td><td> AuxOut3 </td></tr>
-  <tr><td> M4 </td><td> 104 </td> <td> MainOut4 </td><td>  </td><td> A12 </td><td> 53 </td><td> AuxOut4 </td></tr>
-  <tr><td> M5 </td><td> 105 </td> <td> MainOut5 </td><td>  </td><td> A13 </td><td> 54 </td><td> AuxOut5 </td></tr>
-  <tr><td> M6 </td><td> 106 </td> <td> MainOut6 </td><td>  </td><td> A14 </td><td> 55 </td><td> AuxOut6 </td></tr>
-  <tr><td> M7 </td><td> 107 </td> <td> MainOut7 </td><td>  </td><td> A15 </td><td> 56 </td><td>  </td></tr>
-  <tr><td> M8 </td><td> 108 </td> <td> MainOut8 </td><td>  </td><td>  </td><td>  </td><td>  </td></tr>
-</table>
+| IO Pins |  | FMU Pins |
+| --- | --- | --- |
+| Name | Value | Option |
+|  | Name | Value |
+| Option | M1 | 101 |
+| MainOut1 |  | A9 |
+| 50 | AuxOut1 | M2 |
+| 102 | MainOut2 |  |
+| A10 | 51 | AuxOut2 |
+| M3 | 103 | MainOut3 |
+|  | A11 | 52 |
+| AuxOut3 | M4 | 104 |
+| MainOut4 |  | A12 |
+| 53 | AuxOut4 | M5 |
+| 105 | MainOut5 |  |
+| A13 | 54 | AuxOut5 |
+| M6 | 106 | MainOut6 |
+|  | A14 | 55 |
+| AuxOut6 | M7 | 107 |
+| MainOut7 |  | A15 |
+| 56 |  | M8 |
+| 108 | MainOut8 |  |
+|  |  |  |
 
 ## Battery Monitoring
 
 The X6_Air flight controller has one six-pin power connectors, supporting CAN interface power supply.
 The autopilot defaults are setup for CAN Power Module use (normally supplied with autopilot):
 
-- :ref:`BATT_MONITOR<BATT_MONITOR>` = 8
-- :ref:`CAN_P1_DRIVER<CAN_P1_DRIVER>` = 1
-- :ref:`CAN_P2_DRIVER<CAN_P2_DRIVER>` = 1
-- :ref:`CAN_D1_PROTOCOL<CAN_D1_PROTOCOL>` = 1
-- :ref:`CAN_D2_PROTOCOL<CAN_D2_PROTOCOL>` = 1
+- BATT_MONITOR = 8
+- CAN_P1_DRIVER = 1
+- CAN_P2_DRIVER = 1
+- CAN_D1_PROTOCOL = 1
+- CAN_D2_PROTOCOL = 1
 
 ## Compass
 
@@ -144,21 +151,20 @@ The X6_Air flight controller built-in industrial-grade electronic compass chip I
 interference, the autopilot is usually used with an external I2C compass as
 part of a GPS/Compass combination.
 
-## Analog inputs
+## Analog Inputs
 
 The X6_Air flight controller has 2 analog inputs.
 
 - ADC Pin12 -> ADC 6.6V Sense
 - ADC Pin13 -> ADC 3.3V Sense
 
-Loading Firmware
-================
+## Loading Firmware
 
 The board comes pre-installed with an ArduPilot compatible bootloader,
 allowing the loading of xxxxxx.apj firmware files with any ArduPilot
 compatible ground station.
-Firmware for these boards can be found `here <https://firmware.ardupilot.org>`_ in  sub-folders labeled "ZeroOne_Air".
+Firmware for these boards can be found [here](https://firmware.ardupilot.org) in  sub-folders labeled "ZeroOne_Air".
 
 ## Where to Buy
 
-https://www.01aero.cn
+[ZeroOne](https://www.01aero.cn)

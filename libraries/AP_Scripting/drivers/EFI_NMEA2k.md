@@ -3,21 +3,15 @@
 This driver implements support for marine EFI systems using NMEA 2000
 CAN messages.
 
-# Parameters
+## Parameters
 
 The script used the following parameters:
 
-## EFI_2K_ENABLE
+### EFI_2K_ENABLE
 
 this must be set to 1 to enable the driver
 
-## EFI_2K_OPTIONS
-
-This sets options for the driver. Currently the only option is to set
-EFI_2K_OPTIONS to 1 to enable logging of the raw CAN frames for
-debugging purposes.
-
-# Operation
+## Operation
 
 This driver should be loaded by placing the lua script in the
 APM/SCRIPTS directory on the microSD card, which can be done either
@@ -43,3 +37,10 @@ The GCS will receive EFI_STATUS MAVLink messages which includes RPM,
 cylinder head temperature, exhaust gas temperature, injection timing,
 engine load, fuel consumption rate, throttle position atmospheric
 pressure and ignition voltage.
+
+## Logging CAN frames
+
+To capture the raw CAN traffic for debugging set bit 0 of the
+CAN_Pn_OPTIONS parameter for the bus in use. That logs every frame on
+the bus as a CANF message, in both directions, and can be replayed with
+Tools/scripts/CAN/CAN_playback.py.

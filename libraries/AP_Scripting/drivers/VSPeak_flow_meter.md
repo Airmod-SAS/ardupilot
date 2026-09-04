@@ -2,15 +2,15 @@
 
 This driver implements support for the VSPeak Modell flow meter sensor.
 
-https://www.vspeak-modell.de/en/flow-meter
+[V-Speak](https://www.vspeak-modell.de/en/flow-meter)
 
-# Setup
+## Setup
 
 ## Mode selection
 
 There are two ways to operate this sensor.
 
-**A: Save consumed volume**
+### A: Save consumed volume
 
 Under this mode, the sensor will remember how much fuel volume was consumed
 across power cycles. This allows you to have an accurate fuel tank level
@@ -23,7 +23,7 @@ To set that mode, you need to set the `Auto Reset` setting to `OFF` in
 the `FLOW.txt` sensor settings file.
 For more information, read the sensor manual.
 
-**B: Forget consumed volume**
+### B: Forget consumed volume
 
 Under this mode, the consumed fuel volume will reset after each power cycle.
 This is especially important for fuel-powered vehicles, as there is no
@@ -79,7 +79,7 @@ For mode B (reset consumed), set `VSPF_MODE=1`.
 
 11. Enable the script itself with `VSPF_ENABLE=1`.
 
-# Operation
+## Operation
 
 Once everything is configured correctly, the corresponding battery monitor
 will display in the corresponding `BATTERY_STATUS` MAVLink message:
@@ -98,31 +98,31 @@ the fuel volume that is in the tank.
 If operating under mode A (Save consumed), reset the sensor by triggering the
 PWM pulse.
 
-# Parameters
+## Parameters
 
 The script used the following parameters:
 
-## VSPF_ENABLE
+### VSPF_ENABLE
 
 Setting this to 1 enables the driver.
 
-## VSPF_BAT_IDX
+### VSPF_BAT_IDX
 
 Selects which battery monitor instance will be fed the fuel consumption
 information. 1-indexed.
 
-## VSPF_CFACT
+### VSPF_CFACT
 
 This is multiplicative factor to correct the measured flow. Set to <1 if your
 sensor measures too high and vice versa.
 
-## VSPF_MODE
+### VSPF_MODE
 
 Tells the script which mode it is operating in.
 0: Mode A, save consumption.
 1: Mode B, reset consumption.
 
-## VSPF_PORT
+### VSPF_PORT
 
 Which Scripting serial port the sensor is connected at.
 Set to 0 to select the first serial port, 1 to select the 2nd serial port, etc...
